@@ -68,10 +68,11 @@ class Hotel:
                 hotel.location = new_location
                 hotel.rooms_available = new_rooms_available
         cls.save_hotels(hotels)
-    
+
     @classmethod
     def reserve_room(cls, hotel_id, rooms_requested):
-        """Reserva habitaciones en un hotel si hay disponibilidad, o lanza un ValueError si el hotel no existe."""
+        """Reserva habitaciones en un hotel si hay disponibilidad, 
+        o lanza un ValueError si el hotel no existe."""
         hotels = cls.load_hotels()
         for hotel in hotels:
             if hotel.hotel_id == hotel_id:
@@ -79,18 +80,17 @@ class Hotel:
                     hotel.rooms_available -= rooms_requested
                     cls.save_hotels(hotels)
                     return True
-                else:
-                    print("Error: No hay suficientes habitaciones disponibles.")
-                    return False
+                print("Error: No hay suficientes habitaciones disponibles.")
+                return False
 
-        raise ValueError(f"Error: Hotel con ID {hotel_id} no encontrado.")  # Asegurar que se lanza el ValueError
-
+        raise ValueError(f"Error: Hotel con ID {hotel_id} no encontrado.")
     @classmethod
     def display_hotels(cls):
         """Muestra todos los hoteles guardados."""
         hotels = cls.load_hotels()
         for hotel in hotels:
-            print(f"{hotel.hotel_id}: {hotel.name} - {hotel.location} ({hotel.rooms_available} habitaciones)")
+            print(f"{hotel.hotel_id}: {hotel.name} - {hotel.location} \
+                  ({hotel.rooms_available} habitaciones)")
 
 
 class Customer:
@@ -204,7 +204,8 @@ class Reservation:
 
     @classmethod
     def cancel_reservation(cls, reservation_id):
-        """Cancela una reserva y devuelve exactamente la cantidad correcta de habitaciones al hotel."""
+        """Cancela una reserva y devuelve exactamente la 
+        cantidad correcta de habitaciones al hotel."""
         reservations = cls.load_reservations()
         new_reservations = []
         canceled = False
@@ -223,7 +224,8 @@ class Reservation:
 
         if canceled:
             cls.save_reservations(new_reservations)
-            print(f"✅ Reserva {reservation_id} cancelada correctamente. Habitaciones restauradas: 1")
+            print(f"✅ Reserva {reservation_id} cancelada correctamente. \
+                  Habitaciones restauradas: 1")
         else:
             print(f"⚠️ No se encontró la reserva {reservation_id}.")
 
