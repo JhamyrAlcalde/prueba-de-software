@@ -6,7 +6,7 @@ Incluye pruebas unitarias y medición de cobertura con `unittest` y `coverage`.
 ** Información importante ** :
 
 Archivo	                    Descripción
-hotel_system.py	        Código principal con la implementación del sistema de reservas.
+hotel_system.py	      Código principal con la implementación del sistema de reservas.
 main_1.py	            Prueba el flujo normal (crear hoteles, clientes y reservas).
 main_2.py	            Prueba la modificación y eliminación de datos.
 main_3.py	            Prueba validaciones de errores (hoteles inexistentes, JSON corrupto).
